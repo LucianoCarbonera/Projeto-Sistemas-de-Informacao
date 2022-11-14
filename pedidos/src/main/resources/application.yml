@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/pedidos?useTimezone=true&serverTimezone=UTC
+    username: postgres
+    password: postgres
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+# docker network create my-network
+# docker run --name banco-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=pagamentos -e TZ=America/Sao_Paulo --restart=unless-stopped --network my-network -p 5432:5432 -d postgres:11.16
+# docker run -it --restart unless-stopped --name rabbitmq --network my-network  -p 5672:5672 -p 15672:15672 -d rabbitmq:3.10-management
